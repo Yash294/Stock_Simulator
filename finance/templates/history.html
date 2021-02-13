@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+
+{% block main %}
+<table class="table table-dark table-hover">
+    <tr>
+        <th>Symbol</th>
+        <th>Shares</th>
+        <th>Price</th>
+        <th>Status</th>
+        <th>Date</th>
+        <th>Time</th>
+    </tr>
+    {% for row in user_history %}
+        <tr>
+            <td>{{ row["symbol"] }}</td>
+            <td>{{ row["shares"] }}</td>
+            <td>${{ '%0.2f'| format(row["price"]|float) }}</td>
+            <td>{{ row["status"] }}</td>
+            <td>{{ row["date"] }}</td>
+            <td>{{ row["time"] }}</td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}
